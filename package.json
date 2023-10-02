@@ -1,0 +1,29 @@
+{
+  "name": "medicine-remainder-app",
+  "version": "1.0.0",
+  "description": "This is the backend of medicine remainder app ",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/saketkumar9040/medicine-remainder-server.git"
+  },
+  "author": "saket@kumar",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/saketkumar9040/medicine-remainder-server/issues"
+  },
+  "homepage": "https://github.com/saketkumar9040/medicine-remainder-server#readme",
+  "dependencies": {
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^7.5.3"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  }
+}
