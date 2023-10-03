@@ -1,7 +1,8 @@
 import express from "express";
+import { addRemainder } from "../controllers/remainderController.js";
 
 const router = express.Router();
 
-router.route("/saveRemainder")
+router.post("/addRemainder",addRemainder);
 
 export default router;

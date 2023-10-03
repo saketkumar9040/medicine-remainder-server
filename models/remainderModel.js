@@ -1,11 +1,12 @@
 import mongoose from "mongoose";
 
 const remainderSchema = new mongoose.Schema({
-    name:String,
+    medicineName:String,
     frequency:Number,
-    duration:Number,
-    
-    
+    time:Date,
+    pillsCount:Number,
     createdAt:Date,
-    updatedAt:Date
-})
+    updatedAt:Date,
+});
+
+export const Remainder = mongoose.model("remainders",remainderSchema);

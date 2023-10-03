@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "This is the backend of medicine remainder app ",
   "main": "index.js",
-  "type":"module",
+  "type": "module",
   "scripts": {
     "start": "node index.js",
     "dev": "nodemon index.js"
@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/saketkumar9040/medicine-remainder-server#readme",
   "dependencies": {
+    "cors": "^2.8.5",
     "dotenv": "^16.3.1",
     "express": "^4.18.2",
     "jsonwebtoken": "^9.0.2",
