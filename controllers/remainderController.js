@@ -10,6 +10,7 @@ export const addRemainder = async (req, res) => {
       pillsCount,
       pillsStock,
       caretakerNumber,
+      deviceId
     } = req.body;
 
     saveData = await Remainder.create(req.body);

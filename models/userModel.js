@@ -1,11 +1,11 @@
 import mongoose from "mongoose";
 
 const userSchema = new mongoose.Schema({
-     name:String,
+     userName:String,
      gender:String,
      email:String,
      phone:Number,
-     watsApp:Number,
+     watsAppNumber:Number,
      deviceId:String,
      FCMToken:[String],
      profilePicUrl:String,
