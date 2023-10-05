@@ -7,7 +7,7 @@ const userSchema = new mongoose.Schema({
      phone:Number,
      watsApp:Number,
      deviceId:String,
-     deviceFCMToken:[String],
+     FCMToken:[String],
      profilePicUrl:String,
      createdAt:Date,
      updatedAt:Date,

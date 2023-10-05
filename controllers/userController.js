@@ -5,17 +5,18 @@ export const createUser = async (req,res) => {
      const {
       deviceId,
       FCMToken
-     } =req.body;
+     } = req.body.data;
+     console.log(req.body)
 
-     if(deviceId ==="" || FCMToken ==="" ||deviceId === undefined || FCMToken ===undefined){
-         return res.status(400).json({
-          success:false,
-          message:"invalid device id / FCMToken"
-         })
-     };
-     const userExists = await User.findOne({deviceId,FCMToken:{$in:[FCMToken]}});
+    //  if(deviceId ==="" || FCMToken ==="" ||deviceId === undefined || FCMToken ===undefined){
+    //      return res.status(400).json({
+    //       success:false,
+    //       message:"invalid device id / FCMToken"
+    //      })
+    //  };
+     const userExists = await User.findOne({deviceId});
      if(!userExists){
-       const createUser = await User.create({deviceId,FCMToken})
+       const createUser = await User.create({deviceId,FCMToken:[FCMToken],createdAt:new Date(Date.now())});
        return res.status(201).json({
         success:true,
         message:"User created successfully",
