@@ -15,7 +15,7 @@ export const createUser = async (req, res) => {
       });
     }
     const userExists = await User.findOne({ deviceId });
-    console.log(userExists)
+    // console.log(userExists)
     if (!userExists) {
       const createUser = await User.create({
         deviceId,

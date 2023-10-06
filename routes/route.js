@@ -1,5 +1,5 @@
 import express from "express";
-import { addReminder } from "../controllers/remainderController.js";
+import { addReminder } from "../controllers/reminderController.js";
 import { addUserDetails, createUser } from "../controllers/userController.js";
 
 const router = express.Router();

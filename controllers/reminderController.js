@@ -1,4 +1,4 @@
-import { Remainder } from "../models/remainderModel.js";
+import { Reminder } from "../models/reminderModel.js";
 
 export const addReminder = async (req, res) => {
   try {
@@ -13,12 +13,21 @@ export const addReminder = async (req, res) => {
       userId,
     } = req.body.data;
 
-    saveData = await Remainder.create({...req.body.data,createdAt:new Date(Date.now())});
-    
+    const saveData = await Reminder.create({
+      medicineName,
+      frequency,
+      time,
+      pillsCount,
+      pillsStock,
+      caretakerNumber,
+      userId,
+      createdAt: new Date(Date.now()),
+    });
+
     return res.status(201).json({
       success: true,
-      message: "medicine remainder saved successfully",
-      data:saveData
+      message: "medicine reminder saved successfully",
+      data: saveData,
     });
   } catch (error) {
     return res.status(500).json({
@@ -27,5 +36,3 @@ export const addReminder = async (req, res) => {
     });
   }
 };
-
-
