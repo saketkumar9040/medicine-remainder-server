@@ -6,6 +6,7 @@ const reminderSchema = new mongoose.Schema({
     time:Date,
     pillsCount:String,
     pillsStock:String,
+    caretakerNumber:String,
     createdAt:Date,
     updatedAt:Date,
     userId:{

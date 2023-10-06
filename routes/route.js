@@ -1,5 +1,5 @@
 import express from "express";
-import { addReminder } from "../controllers/reminderController.js";
+import { addReminder, deleteReminder, getReminderList } from "../controllers/reminderController.js";
 import { addUserDetails, createUser } from "../controllers/userController.js";
 
 const router = express.Router();
@@ -12,6 +12,8 @@ router.post("/addUserDetails",addUserDetails);
 //  REMINDER API'S  ================================================================================>
 
 router.post("/addReminder",addReminder);
+router.post("/getReminderList",getReminderList);
+router.post("/deleteReminder",deleteReminder);
 
 export default router;
  ;
