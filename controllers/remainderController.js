@@ -1,6 +1,6 @@
 import { Remainder } from "../models/remainderModel.js";
 
-export const addRemainder = async (req, res) => {
+export const addReminder = async (req, res) => {
   try {
     console.log(req.body);
     const {
@@ -11,11 +11,11 @@ export const addRemainder = async (req, res) => {
       pillsStock,
       caretakerNumber,
       userId,
-    } = req.body;
+    } = req.body.data;
 
-    saveData = await Remainder.create(req.body);
-
-    res.status(201).json({
+    saveData = await Remainder.create({...req.body.data,createdAt:new Date(Date.now())});
+    
+    return res.status(201).json({
       success: true,
       message: "medicine remainder saved successfully",
       data:saveData

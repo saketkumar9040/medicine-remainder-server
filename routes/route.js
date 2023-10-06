@@ -1,13 +1,17 @@
 import express from "express";
-import { addRemainder } from "../controllers/remainderController.js";
-import { addUserDetails, createUser, getUserDetails } from "../controllers/userController.js";
+import { addReminder } from "../controllers/remainderController.js";
+import { addUserDetails, createUser } from "../controllers/userController.js";
 
 const router = express.Router();
 
-router.post("/addRemainder",addRemainder);
+//   USER  API'S  ==================================================================================>
+
 router.post("/createUser",createUser);
-router.post("/getUserDetails",getUserDetails);
 router.post("/addUserDetails",addUserDetails);
+
+//  REMINDER API'S  ================================================================================>
+
+router.post("/addReminder",addReminder);
 
 export default router;
  ;

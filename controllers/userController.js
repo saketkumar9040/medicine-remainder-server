@@ -42,38 +42,6 @@ export const createUser = async (req, res) => {
   }
 };
 
-export const getUserDetails = async (req, res) => {
-  try {
-    const { deviceId } = req.body.data;
-    console.log(deviceId);
-
-    if (deviceId === undefined) {
-      return res.status(400).json({
-        success: false,
-        message: "device id is undefined",
-      });
-    }
-    console.log(deviceId);
-    const userData = await User.findOne({ deviceId });
-    if (!userData) {
-      return res.status(404).json({
-        success: false,
-        message: "No user Data found",
-      });
-    }
-    return res.status(200).json({
-      success: true,
-      message: "User data fetched successfully",
-      data: userData,
-    });
-  } catch (error) {
-    return res.status(500).json({
-      success: false,
-      message: error.message,
-    });
-  }
-};
-
 export const addUserDetails = async (req, res) => {
   try {
     console.log(req.body);
@@ -84,10 +52,10 @@ export const addUserDetails = async (req, res) => {
       phone,
       watsAppNumber,
       profilePicUrl,
-      deviceId
+      userId
     } = req.body.data;
 
-    const createUser =await User.findOneAndUpdate({deviceId},{userName,gender,email,phone,watsAppNumber,profilePicUrl, updatedAt: new Date(Date.now())},{
+    const createUser =await User.findByIdAndUpdate(userId,{userName,gender,email,phone,watsAppNumber,profilePicUrl, updatedAt: new Date(Date.now())},{
       new:true,
       upsert:true
     });
