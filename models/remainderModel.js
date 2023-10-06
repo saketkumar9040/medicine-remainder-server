@@ -7,7 +7,10 @@ const remainderSchema = new mongoose.Schema({
     pillsCount:Number,
     createdAt:Date,
     updatedAt:Date,
-    deviceId:String,
+    userId:{
+        type:mongoose.Schema.Types.ObjectId,
+        ref:"users"
+    }
 });
 
 export const Remainder = mongoose.model("remainders",remainderSchema);
