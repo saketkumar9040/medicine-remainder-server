@@ -18,6 +18,7 @@ export const addRemainder = async (req, res) => {
     res.status(201).json({
       success: true,
       message: "medicine remainder saved successfully",
+      data:saveData
     });
   } catch (error) {
     return res.status(500).json({
