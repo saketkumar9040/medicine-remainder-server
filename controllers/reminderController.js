@@ -93,7 +93,19 @@ export const deleteReminder = async (req, res) => {
 
 export const editReminder = async (req,res) => {
   try {
-    console.log(req.body.data)
+    const {id,medicineName,frequency,time,pillsCount,pillsStock,caretakerNumber}=req.body.data;
+    const updateReminder = await Reminder.findByIdAndUpdate(id,{
+      medicineName,
+      frequency,
+      time,
+      pillsCount,
+      pillsStock,
+      caretakerNumber
+    });
+    return res.status(200).json({
+      success: true,
+      message: "Reminder updated successfully",
+    });
   } catch (error) {
     return res.status(500).json({
       success: false,
