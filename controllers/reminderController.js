@@ -1,6 +1,7 @@
 import { Reminder } from "../models/reminderModel.js";
-import cron from "node-cron";
 import { User } from "../models/userModel.js";
+import schedule from "node-schedule"
+import { sendPushNotification } from "../utils/pushNotificationHandler.js";
 
 export const addReminder = async (req, res) => {
   try {
@@ -27,14 +28,19 @@ export const addReminder = async (req, res) => {
 
     //  SCHEDULE PUSH NOTIFICATION ===========================================================>
     const userData = await User.findById(userId);
+    console.log(userData)
 
     const data = new Date(time);
     const hours = data.getHours();
     const minutes = data.getMinutes();
-    const messageText = `Hello ${userData.name}, it's the time to take your medicine ${medicineName}.please do take it as health is the true wealth 😊`;
+    const messageText = `Hello ${userData.userName}, it's the time to take your medicine ${medicineName}.please do take it as health is the true wealth 😊`;
 
-    cron.schedule(`* ${minutes} ${hours} * * *`, () => {
-      sendPushNotification(userData.FCMToken[0],messageText);
+    schedule.scheduleJob({hour:hours,minute:minutes}, async () => {
+      try {
+        await sendPushNotification(userData.FCMToken[0], messageText);
+      } catch (error) {
+        console.log(error.message);
+      }
     });
 
     return res.status(201).json({
