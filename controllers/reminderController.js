@@ -90,3 +90,14 @@ export const deleteReminder = async (req, res) => {
     });
   }
 };
+
+export const editReminder = async (req,res) => {
+  try {
+    console.log(req.body.data)
+  } catch (error) {
+    return res.status(500).json({
+      success: false,
+      message: error.message,
+    });
+  }
+}
