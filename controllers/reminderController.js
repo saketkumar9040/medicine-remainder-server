@@ -34,7 +34,7 @@ export const addReminder = async (req, res) => {
     const data = new Date(time);
     const hours = data.getHours();
     const minutes = data.getMinutes();
-    const messageText = `Hello ${userData.userName}, it's the time to take your medicine ${medicineName}.please do take it as health is the true wealth 😊`;
+    const messageText = `Hello ${userData.userName}, it's the time to take your medicine ${medicineName}. please do take it as health is the true wealth 😊`;
     const watsAppMessageText = `Hello Dear, it's the time for ${userData.userName} to take his medicine ${medicineName} .please do remind him 😊`;
 
     schedule.scheduleJob({ hour: hours, minute: minutes }, async () => {
