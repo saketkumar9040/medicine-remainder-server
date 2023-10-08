@@ -13,7 +13,6 @@ export const sendWatsAppNotification = async (body, to) => {
         to: `whatsapp:+91${to}`,
       })
       .then((message) => console.log(message.sid))
-      .done();
   } catch (error) {
     console.log(error.message);
   }

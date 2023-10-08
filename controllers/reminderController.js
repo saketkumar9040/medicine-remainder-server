@@ -3,6 +3,7 @@ import { User } from "../models/userModel.js";
 import schedule from "node-schedule";
 import { sendPushNotification } from "../utils/pushNotificationHandler.js";
 import { sendWatsAppNotification } from "../utils/watsAppNotificationHandler.js";
+import { sendMessage } from "../utils/messageHandler.js";
 
 export const addReminder = async (req, res) => {
   try {
@@ -29,7 +30,6 @@ export const addReminder = async (req, res) => {
 
     //  SCHEDULE PUSH NOTIFICATION ===========================================================>
     const userData = await User.findById(userId);
-    console.log(userData);
 
     const data = new Date(time);
     const hours = data.getHours();
@@ -41,7 +41,7 @@ export const addReminder = async (req, res) => {
       try {
         await sendPushNotification(userData.FCMToken[0], messageText);
         if (caretakerNumber) {
-          await sendWatsAppNotification(messageText, caretakerNumber);
+          await sendMessage(messageText, caretakerNumber);
         }
       } catch (error) {
         console.log(error.message);
