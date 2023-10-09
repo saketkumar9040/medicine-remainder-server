@@ -1,10 +1,12 @@
 import { createTransport } from "nodemailer";
 
-export const sendMail = async (email, subject, message) => {
+export const sendMail = async (email, subject, text) => {
   try {
     const transport = createTransport({
-      host: process.env.SMTP_HOST,
-      port: process.env.SMTP_PORT,
+    //   host: process.env.SMTP_HOST,
+    //   port: process.env.SMTP_PORT,
+      service:process.env.SMTP_SERVICE,
+    //   secure:Boolean(process.env.SMTP_SECURE),
       auth: {
         user: process.env.SMTP_USER,
         pass: process.env.SMTP_PASS,
@@ -15,7 +17,7 @@ export const sendMail = async (email, subject, message) => {
       from: process.env.SMTP_USER,
       to: email,
       subject,
-      message,
+      text,
     });
     console.log(send);
   } catch (error) {
