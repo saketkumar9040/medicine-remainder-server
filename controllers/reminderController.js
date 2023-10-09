@@ -4,6 +4,7 @@ import schedule from "node-schedule";
 import { sendPushNotification } from "../utils/pushNotificationHandler.js";
 import { sendWatsAppNotification } from "../utils/watsAppNotificationHandler.js";
 import { sendMessage } from "../utils/messageHandler.js";
+import { sendMail } from "../utils/emailHandler.js";
 
 export const addReminder = async (req, res) => {
   try {
@@ -40,6 +41,7 @@ export const addReminder = async (req, res) => {
     schedule.scheduleJob({ hour: hours, minute: minutes }, async () => {
       try {
         await sendPushNotification(userData.FCMToken[0], messageText);
+        await sendMail(userData.email,"Medicine Time ⏳",messageText);
         if (caretakerNumber) {
           await sendMessage(messageText, caretakerNumber);
         }
