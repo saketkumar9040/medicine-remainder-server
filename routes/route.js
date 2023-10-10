@@ -9,6 +9,13 @@ import { addUserDetails, createUser } from "../controllers/userController.js";
 
 const router = express.Router();
 
+router.get("/",(req,res)=>{
+  res.status(200).send({
+    success:true,
+    message:"connection successful😊"
+  })
+})
+
 //   USER  API'S  ==================================================================================>
 
 router.post("/createUser", createUser);
