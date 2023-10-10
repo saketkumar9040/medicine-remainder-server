@@ -9,7 +9,7 @@ import { addUserDetails, createUser } from "../controllers/userController.js";
 
 const router = express.Router();
 
-router.get("/",(req,res)=>{
+router.get("/check",(req,res)=>{
   res.status(200).send({
     success:true,
     message:"connection successful😊"
