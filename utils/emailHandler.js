@@ -4,9 +4,7 @@ export const sendMail = async (email, subject, text) => {
   try {
     const transport = createTransport({
       host: process.env.SMTP_HOST,
-      port: Number(process.env.SMTP_PORT),
-      service:process.env.SMTP_SERVICE,
-      secure:Boolean(process.env.SMTP_SECURE),
+      port: process.env.SMTP_PORT,
       auth: {
         user: process.env.SMTP_USER,
         pass: process.env.SMTP_PASS,
