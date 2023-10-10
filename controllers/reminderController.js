@@ -43,7 +43,7 @@ export const addReminder = async (req, res) => {
         await sendPushNotification(userData.FCMToken[0], messageText);
         await sendMail(userData.email,"Medicine Time ⏳",messageText);
         if (caretakerNumber) {
-          await sendMessage(messageText, caretakerNumber);
+          await sendMessage(watsAppMessageText, caretakerNumber);
         }
       } catch (error) {
         console.log(error.message);
